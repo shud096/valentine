@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Will you be my Valentine?</title>
+
+<style>
+    body {
+        background: #fdd6e5;
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .card {
+        background: white;
+        width: 420px;
+        padding: 40px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    }
+
+    .cute-img {
+        font-size: 70px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 40px;
+        font-weight: 600;
+    }
+
+    .btn-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .btn {
+        padding: 15px 35px;
+        font-size: 20px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #yes {
+        background: #ff4d88;
+        color: white;
+        font-weight: bold;
+    }
+
+    #no {
+        background: #d3d3d3;
+        color: black;
+        position: absolute;
+        z-index: 10;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <div class="cute-img">🐶💕</div>
+
+    <h2>Neethi, will you be my valentine?</h2>
+
+    <div class="btn-container">
+        <button id="yes" class="btn">Yes</button>
+        <button id="no" class="btn">No</button>
+    </div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    function moveNoButton() {
+        const maxX = 140;
+        const maxY = 140;
+        const x = Math.random() * maxX - maxX / 2;
+        const y = Math.random() * maxY - maxY / 2;
+        noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // Desktop hover
+    noBtn.addEventListener("mouseover", moveNoButton);
+
+    // Mobile touch
+    noBtn.addEventListener("touchstart", (e) => {
+        e.preventDefault(); 
+        moveNoButton();
+    });
+
+    // Optional: When Yes is clicked, show a cute message
+    document.getElementById("yes").onclick = () => {
+        document.body.innerHTML = `
+            <div style="text-align:center; font-size:28px; padding:40px;">
+                <div style="font-size:80px;">💖😊💖</div>
+                Neethi, you just made my day!<br><br>
+                Can't wait to see you, Valentine ❤️
+            </div>
+        `;
+    };
+</script>
+
+</body>
+</html>
